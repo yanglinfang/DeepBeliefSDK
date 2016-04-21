@@ -24,7 +24,9 @@ what applications that helps you build.
  - [OS X](#getting-started-on-os-x)
  - [Raspberry Pi 1](#getting-started-on-a-raspberry-pi-1)
  - [Raspberry Pi 2](#getting-started-on-a-raspberry-pi-2)
+ - [Beaglebone Black](#getting-started-on-a-beaglebone-black)
  - [Javascript](#getting-started-with-javascript)
+ - [Building from Source](#building-from-source)
 
 ### Adding to an existing application
 
@@ -372,6 +374,32 @@ Clone this repository into ~/projects/DeepBeliefSDK
 
 You should see the classification results, with a time of around 3.8 seconds on a stock Pi 2. If you then overclock it with `raspi-config`, you can increase that to 3.2s.
 
+## Getting Started on a Beaglebone Black
+
+Like the Pi 2, there’s no pre-built library for the Beaglebone Black, but you can build it yourself using the ARM-optimized [Eigen open-source library](http://eigen.tuxfamily.org/index.php?title=Main_Page). You will need to use the latest development version of Eigen to make sure NEON is enabled on the default gcc v4.6 compiler though, see [this patch](https://bitbucket.org/eigen/eigen/pull-request/117/add-check-for-older-neon-macro/diff#comment-None).
+
+Here are the instructions:
+
+`mkdir ~/projects`
+
+`cd ~/projects`
+
+Clone this repository into ~/projects/DeepBeliefSDK
+
+`sudo apt-get install -y mercurial`
+
+`hg clone https://bitbucket.org/eigen/eigen`
+
+`ln -s ~/projects/eigen ~/projects/DeepBeliefSDK/eigen`
+
+`cd ~/projects/DeepBeliefSDK/source`
+
+`make clean`
+
+`make GEMM=eigen TARGET=beagle`
+
+`./jpcnn -i data/dog.jpg -n ../networks/jetpac.ntwk -t -m s -d`
+
 ## Getting Started with Javascript
 
 The Javascript version of the library includes complete source, and a [browser demo page](http://jetpacapp.github.io/DeepBeliefSDK/).
@@ -379,6 +407,26 @@ The interface is similar to the C version, but uses native Javascript image obje
 You'll need to include the jpcnn.js file, and then load the networks/jetpac_untransposed.ntwk file (which is a slightly-modified version of the standard Jetpac network).
 Then you should be able to call `Network.classifyImage()`, with an option to accelerate the calculations using WebGL if you're in a browser that supports it.
 On my 2012 MacBook Pro in Chrome, the WebGL version takes around 600ms, whereas the naive CPU path takes 5 seconds.
+
+## Building from Source
+
+If you’re on a platform that isn’t covered here, you can compile your own version of the library from the code and Makefile inside the source directory. It’s designed to have no dependencies by default, using plain, portable C++, and it’s possible to get it running on almost any device that has a compiler and the standard C libraries. Here are the minimal instructions:
+
+`mkdir ~/projects`
+
+`cd ~/projects`
+
+`git clone https://github.com/jetpacapp/DeepBeliefSDK.git`
+
+`cd ~/projects/DeepBeliefSDK/source`
+
+`make clean`
+
+`make`
+
+`./jpcnn -i data/dog.jpg -n ../networks/jetpac.ntwk -t -m s -d`
+
+There are two arguments you can pass into the make file to control compilation. PLATFORM (used as `make PLATFORM=foo`) controls settings for specific devices, for example enabling particular cpus in gcc. The GEMM argument decides which implementation of the matrix multiplication that takes the bulk of the execution time to use, so you can swap in something like Eigen or Intel’s MKL on supported platforms.
 
 ## Examples
 
