@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "592FF8B418ECBD7600C164F8"
-               BuildableName = "SimpleExample.app"
-               BlueprintName = "SimpleExample"
-               ReferencedContainer = "container:SimpleExample.xcodeproj">
+               BuildableName = "LearningExample.app"
+               BlueprintName = "LearningExample"
+               ReferencedContainer = "container:LearningExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "592FF8B418ECBD7600C164F8"
-            BuildableName = "SimpleExample.app"
-            BlueprintName = "SimpleExample"
-            ReferencedContainer = "container:SimpleExample.xcodeproj">
+            BuildableName = "LearningExample.app"
+            BlueprintName = "LearningExample"
+            ReferencedContainer = "container:LearningExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "592FF8B418ECBD7600C164F8"
-            BuildableName = "SimpleExample.app"
-            BlueprintName = "SimpleExample"
-            ReferencedContainer = "container:SimpleExample.xcodeproj">
+            BuildableName = "LearningExample.app"
+            BlueprintName = "LearningExample"
+            ReferencedContainer = "container:LearningExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "592FF8B418ECBD7600C164F8"
-            BuildableName = "SimpleExample.app"
-            BlueprintName = "SimpleExample"
-            ReferencedContainer = "container:SimpleExample.xcodeproj">
+            BuildableName = "LearningExample.app"
+            BlueprintName = "LearningExample"
+            ReferencedContainer = "container:LearningExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
